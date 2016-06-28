@@ -1,5 +1,8 @@
-require "outlearn/version"
+require "nokogiri"
+require "pry"
+require "open-uri"
 
-module Outlearn
-  # Your code goes here...
-end
+require_relative "./outlearn/version"
+require_relative "./outlearn/class_scraper"
+require_relative "./outlearn/cli"
+
