@@ -11,12 +11,15 @@ class Outlearn::CLI
   end
 
   def list
+    
   	puts "Type 1 for a list of activities or 2 for a list of places."
   	input = gets.strip
   	if input == "1"
-  		puts "What do you want to do?"
+  		Outlearn::Class.activity_list.each.with_index(1) do |activity, i|
+        puts "#{i}. #{activity}"
+      end
   	elsif input == "2"
-  		puts "places"
+  		Outlearn::Class.place_list
   	elsif 
   		puts "I'm sorry. You can only choose 1 or 2. Please try again."
   	end

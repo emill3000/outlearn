@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require './lib/outlearn'
+require_relative '../lib/outlearn'
 
 Outlearn::CLI.new.call
