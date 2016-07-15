@@ -8,8 +8,8 @@ class Outlearn::CLI
   end
 
   def list
-		Outlearn::Activity.name_list.each.with_index(1) do |activity, i|
-      puts "#{i}. #{activity.name}"
+		Outlearn::Scraper.name_list.each.with_index(1) do |activity, i|
+      puts "#{i}. #{activity}"
     end
     class_list
   end
@@ -17,12 +17,17 @@ class Outlearn::CLI
   def class_list
     puts "choose a number"
     input = gets.strip.to_i
-    activity = Outlearn::Activity.find(input)
-    puts "#{activity.name}"
+    activity = Outlearn::Classes.find(input)
 
-    Outlearn::Activity.classes.each.with_index(1) do |description, i|
-      puts "#{i}. #{description.name}"
+    print_classes(activity)
+
+    
    end
+
+   def print_classes(activity)
+    Outlearn::Classes.all.with_index(1) do |c, i|
+      puts '#{i}. #{class.description}'
+    end
+  end
  end
 
-end
