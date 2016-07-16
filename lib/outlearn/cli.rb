@@ -2,12 +2,12 @@ class Outlearn::CLI
 
 
   def call
+    Outlearn::Scraper.new.make_classes
   	puts "Welcome to Outlearn."
-    list
-    class_list
+    start
   end
 
-  def list
+  def start
 
 		Outlearn::Scraper.name_list.each.with_index(1) do |activity, i|
       puts "#{i}. #{activity}"
@@ -20,14 +20,15 @@ class Outlearn::CLI
     puts "choose a number"
     input = gets.strip.to_i
     activity = Outlearn::Scraper.find(input)
-
-    description_list(activity)
-  end
-
-  def description_list(activity)
-    Outlearn::Classes.new_from_index_page()
     
-  
+    print_classes(activity)
   end
+
+  def print_classes(c)
+    Outlearn::Scraper.make_classes.each.with_index(1) do |c, i|
+      puts "#{i}. #{c.description}"
+    end
+  end
+
  end
 

@@ -22,6 +22,16 @@ class Outlearn::Scraper
     end
   end
 
+  def self.class_index
+    index_page.css('.activity-tile')
+  end
+
+  def self.make_classes
+    class_index.each do |c|
+      Outlearn::Classes.new_from_index_page(c)
+    end
+  end
+  
   def self.find(num)
     activities[num-1]
   end
