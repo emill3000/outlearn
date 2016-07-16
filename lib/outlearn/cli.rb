@@ -24,8 +24,8 @@ class Outlearn::CLI
     print_classes(activity)
   end
 
-  def print_classes(c)
-    Outlearn::Scraper.make_classes.each.with_index(1) do |c, i|
+  def print_classes(activity)
+    Outlearn::Scraper..each.with_index(1) do |c, i|
       puts "#{i}. #{c.description}"
     end
   end
