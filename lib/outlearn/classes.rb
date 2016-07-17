@@ -1,12 +1,12 @@
 class Outlearn::Classes
   attr_accessor :description, :location, :price, :length, :level, :url
 
-  @@all = []
+  @@classes = []
 
   def initialize(description = nil, url = nil)
   	@description = description
   	@url = url
-  	@@all << self
+  	@@classes << self
   end
 
   def self.new_from_index_page(c)
@@ -20,8 +20,9 @@ class Outlearn::Classes
   	@doc = Nokogiri::HTML(open(self.url))
   end
 
-  def self.all
-    @@all
+  def self.classes
+    @@classes = new_from_index_page
+
   end
 
   def location
@@ -30,6 +31,10 @@ class Outlearn::Classes
 
   def price
     @price = doc.css('.name-and-price .price').text
+  end
+
+  def self.find(num)
+    classes[num-1]
   end
  
 end
