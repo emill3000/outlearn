@@ -9,8 +9,9 @@ class Outlearn::Scraper
   end
 
   def make_classes
-    index_page.css('.activity-tile .block').attribute('href').each do |c|
-      Outlearn::Classes.new_from_index_page(c)
+    self.index_page.css('.activity-tile .block').attribute('href').each do |a|
+    	doc = Nokogiri::HTML(open('https://www.outsoul.com', "#{a}"))
+    	doc.css('.item-name').text
     end
   end
   
