@@ -23,8 +23,7 @@ class Outlearn::CLI
   end
 
   def print_classes(activity)
-    Outlearn::Scraper.make_classes
-    binding.pry
+    Outlearn::Scraper.new.make_classes(activity)
 
   end
 
