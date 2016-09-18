@@ -1,7 +1,7 @@
 class Outlearn::CLI
 
   def call
-    Outlearn::Scraper.new.make_classes
+    Outlearn::Scraper.new
     list
 
   end
@@ -23,7 +23,7 @@ class Outlearn::CLI
   end
 
   def print_classes(activity)
-    Outlearn::Scraper.new.make_classes(activity)
+    Outlearn::Classes.new.class_list(activity)
 
   end
 

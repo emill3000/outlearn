@@ -10,6 +10,13 @@ class Outlearn::Classes
     @@all
   end
 
+  def class_list(activity)
+    doc = Nokogiri::HTML(open("https://www.outsoul""#{activity}.com"))
+    doc.css('.item-name').text.each.with_index(1) do |c, i|
+      puts "#{i}. #{c}"
+    end
+  end
+
   def name
     name = doc.css('')
   end
