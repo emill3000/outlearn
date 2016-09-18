@@ -1,4 +1,3 @@
-
 class Outlearn::Scraper 
 
   def index_page
@@ -26,3 +25,4 @@ class Outlearn::Scraper
 
 end
   
+
