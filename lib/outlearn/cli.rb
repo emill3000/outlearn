@@ -1,7 +1,7 @@
 class Outlearn::CLI
   
   def call
-    Outlearn::Activity.new
+    
     list
 
   end
@@ -16,20 +16,23 @@ class Outlearn::CLI
     puts "Choose a number for more information about an activity."
     input = gets.strip.to_i
 
-    list_classes(input)
+    activity = Outlearn::Activity.find(input)
+
+    puts "#{activity.name}"
 
     #activity = Outlearn::Activity.find(input.to_i)
    
 
-    list_classes(activity)
+    #list_classes(activity)
 
 
   end
 
-  def list_classes(activity)
-    Outlearn::Activity.all[activity]
+  def list_classes(input)
+    
+
     puts ""
-    puts  "#{activity.name} Classes"
+    puts  "#{activity} Classes"
     
    
   end
