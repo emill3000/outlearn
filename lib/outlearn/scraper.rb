@@ -7,18 +7,16 @@ class Outlearn::Scraper
   def name_list
     self.index_page.css('.activity-tile .h5').collect{|activity| (activity.text)}
   end
-
   
- 
-  
-  #def make_classes
-   # name_list.each do |c|
-    #  Outlearn::Classes. 
+  def activity
+    self.index_page.css('.activity-tile .a')
+  end
 
-  #def self.class_list
-   # doc = Nokogiri::HTML(open('https://www.outsoul.com/'))
-    #classes = doc.css('.activity-tile .block').attribute('href')
-  #end
+  def make_activity_url
+    activity.each do |a|
+      Outlearn::Activity.url_from_index(a)
+    end
+  end
 
 end
   
