@@ -8,12 +8,12 @@ class Outlearn::Scraper
     self.index_page.css('.activity-tile .h5').collect{|activity| (activity.text)}
   end
   
-  def activity
-    self.index_page.css('.activity-tile .a')
-  end
+  #def activity
+    #self.index_page.css('.activity-tile .a')
+  #end
 
-  def make_activity
-    activity.each do |a|
+  def make_activities
+    index_page.css('.activity-tile').each do |a|
       Outlearn::Activity.new_from_index(a)
     end
   end

@@ -12,28 +12,25 @@ class Outlearn::CLI
     Outlearn::Scraper.new.name_list.each.with_index(1) do |a, i|
       puts "#{i}. #{a}"  
     end
+    
+    Outlearn::Scraper.new.make_activities
 
-    puts "Choose a number for more information about an activity."
+    puts "Choose a number for a list of classes."
     input = gets.strip.to_i
 
     activity = Outlearn::Activity.find(input)
 
-    puts "#{activity.name}"
-
-    #activity = Outlearn::Activity.find(input.to_i)
-   
-
-    #list_classes(activity)
-
+    list_classes(activity)
 
   end
 
-  def list_classes(input)
+  def list_classes(activity)
     
-
     puts ""
-    puts  "#{activity} Classes"
-    
+    puts  "#{activity.name} Classes"
+    Outlearn::Activity.classes.each.with_index(1) do |c, i|
+      puts "#{i}. #{c}"
+    end
    
   end
 
