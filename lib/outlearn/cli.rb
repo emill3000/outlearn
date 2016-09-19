@@ -16,14 +16,13 @@ class Outlearn::CLI
     puts "Choose a number for more information about an activity."
     input = gets.strip.to_i
 
-    activity = Outlearn::Classes.find(input)
+    activity = Outlearn::Activity.find(input)
 
-    print_classes(activity)
 
   end
 
-  def print_classes(activity)
-    Outlearn::Classes.new.class_list(activity)
+  def find_classes(activity)
+    Outlearn::Scraper.activity_url
 
   end
 
