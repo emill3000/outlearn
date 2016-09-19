@@ -12,9 +12,9 @@ class Outlearn::Scraper
     self.index_page.css('.activity-tile .a')
   end
 
-  def make_activity_url
+  def make_activity
     activity.each do |a|
-      Outlearn::Activity.url_from_index(a)
+      Outlearn::Activity.new_from_index(a)
     end
   end
 
