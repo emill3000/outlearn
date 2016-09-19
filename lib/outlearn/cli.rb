@@ -28,7 +28,8 @@ class Outlearn::CLI
     
     puts ""
     puts  "#{activity.name} Classes"
-    Outlearn::Activity.classes.each.with_index(1) do |c, i|
+   
+    activity.classes.each.with_index(1) do |c, i|
       puts "#{i}. #{c}"
     end
    
