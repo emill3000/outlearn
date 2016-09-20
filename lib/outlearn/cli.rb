@@ -1,9 +1,8 @@
 class Outlearn::CLI
   
   def call
-    
     list
-
+    choose
   end
 
   def list
@@ -12,15 +11,28 @@ class Outlearn::CLI
     Outlearn::Scraper.new.name_list.each.with_index(1) do |a, i|
       puts "#{i}. #{a}"  
     end
-    
+  end
+
+  def choose
+    input = nil
+    while input != "exit"
     Outlearn::Scraper.new.make_activities
 
-    puts "Choose a number for a list of classes."
-    input = gets.strip.to_i
+    puts "Choose a number for a list of classes or type exit to quit."
+    input = gets.strip.downcase
 
-    activity = Outlearn::Activity.find(input)
+    if input.to_i >= 1 && input.to_i <= 5
+      
+      activity = Outlearn::Activity.find(input.to_i)
 
-    list_classes(activity)
+      list_classes(activity)
+
+      class_info(cl)
+    else 
+      puts "Please choose a number from the list above."
+    end
+  end
+      
 
   end
 
